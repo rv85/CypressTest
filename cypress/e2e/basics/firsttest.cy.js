@@ -24,9 +24,31 @@ describe('URL test',()=> {
     })
         it('Accessing elements',()=>{
             cy.visit('http://uitest.automationtester.uk/')
+            //with id #
             cy.get('#btn_basic_example')
             cy.get('#home')
 
+            //with class name
+            cy.get('.tab-content')
+
+            //with test
+            cy.contains("All Examples")
+            cy.contains('Input Forms')
+
+            //with tag
+            cy.get('h3')
+
+        })
+        it('click element',()=>{
+            cy.visit('http://uitest.automationtester.uk')
+            cy.get('#btn_basic_example')
+            cy.get('.tree-indicator.glyphicon.glyphicon-chevron-down').click()
+        })
+        it('custom css selectors',()=>{
+            cy.visit('http://uitest.automationtester.uk')
+            cy.get(':nth-child(1) > :nth-child(1) > .dropdown-toggle').click()
+            cy.contains('Input Form Submit').click()
+            cy.get('input[name="first_name"]').type('ravi')
         })
     })
 
